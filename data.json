@@ -1,8 +1,37 @@
 [
-  { "id": 1, "name": "HTML", "category": "Web Development" },
-  { "id": 2, "name": "CSS", "category": "Web Development" },
-  { "id": 3, "name": "JavaScript", "category": "Web Development" },
-  { "id": 4, "name": "TypeScript", "category": "Web Development" },
-  { "id": 5, "name": "react", "category": "Web Development" },
-  { "id": 6, "name": "redux", "category": "Web Development" }
+  {
+    "name": "HTML",
+    "category": "Web Development",
+    "id": 1
+  },
+  {
+    "name": "CSS",
+    "category": "Web Development",
+    "id": 2
+  },
+  {
+    "name": "JavaScript",
+    "category": "Web Development",
+    "id": 3
+  },
+  {
+    "name": "TypeScript",
+    "category": "Web Development",
+    "id": 4
+  },
+  {
+    "name": "react",
+    "category": "Web Development",
+    "id": 5
+  },
+  {
+    "name": "redux",
+    "category": "Web Development",
+    "id": 6
+  },
+  {
+    "name": "Flux",
+    "category": "Web Development",
+    "id": 7
+  }
 ]
