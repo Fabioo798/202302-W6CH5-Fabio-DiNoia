@@ -6,7 +6,7 @@ export class ThingsController {
     this.repo = repo;
   }
 
-  getAll(req: Request, resp: Response) {
+  get(req: Request, resp: Response) {
     this.repo.read().then((data) => {
       resp.json(data);
     });
@@ -28,20 +28,43 @@ export class ThingsController {
       });
   }
 
-  updateAll(req: Request, resp: Response) {
-    const newData = req.body;
-    this.repo.write(newData).then(() => {
-      resp.sendStatus(200);
-    });
-  }
-
   updateOne(req: Request, resp: Response) {
     const id = Number(req.params.id);
-    const updateData = req.body;
+    const newData = req.body;
+
     this.repo
-      .update(id, updateData)
+      .updateOne(id, newData)
+      .then((updatedItem) => {
+        if (updatedItem === null) {
+          resp.status(404).send(`Item with ID ${id} not found`);
+        } else {
+          resp.json(updatedItem);
+        }
+      })
+      .catch((error) => {
+        resp.status(500).send(error.message);
+      });
+  }
+
+  create(req: Request, resp: Response) {
+    const newItem = req.body;
+
+    this.repo
+      .write(newItem)
       .then(() => {
-        resp.sendStatus(200).send(updateData);
+        resp.sendStatus(201);
+      })
+      .catch((error) => {
+        resp.status(500).send(error.message);
+      });
+  }
+
+  delete(req: Request, resp: Response) {
+    const id = Number(req.params.id);
+    this.repo
+      .delete(id)
+      .then(() => {
+        resp.sendStatus(204);
       })
       .catch((error) => {
         resp.status(500).send(error.message);

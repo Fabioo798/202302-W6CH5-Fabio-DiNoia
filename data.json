@@ -1,7 +1,7 @@
 [
   {
     "name": "HTML",
-    "category": "Web Development",
+    "category": "Seb Development",
     "id": 1
   },
   {
@@ -33,5 +33,10 @@
     "name": "Flux",
     "category": "Web Development",
     "id": 7
+  },
+  {
+    "name": "HTML",
+    "category": "seb Development",
+    "id": 8
   }
 ]
