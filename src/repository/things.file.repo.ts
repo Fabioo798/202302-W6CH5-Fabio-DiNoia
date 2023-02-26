@@ -35,20 +35,37 @@ export class ThingsFileRepo {
       }));
 
       newData.forEach((item) => existingData.push(item));
+      console.log(data)
+      return fs.writeFile(file, JSON.stringify(existingData, null, 2));
+    });
+  }
+
+  updateOne(
+    id: number,
+    newData: { [key: string]: string | number }
+  ): Promise<void> {
+    return this.read().then((existingData) => {
+      const index = existingData.findIndex((item) => item.id === id);
+
+      if (index === -1) {
+        throw new Error(`Item with id ${id} not found`);
+      }
+
+      const updatedItem = { ...existingData[index], ...newData };
+      existingData[index] = updatedItem;
 
       return fs.writeFile(file, JSON.stringify(existingData, null, 2));
     });
   }
 
-  update(id: number, dataToUpdate: { [key: string]: string | number }) {
+  delete(id: number) {
     return this.read().then((existingData) => {
       const index = existingData.findIndex((item) => item.id === id);
       if (index === -1) {
         throw new Error(`Item with id ${id} not found`);
       }
 
-      const updateItem = { ...existingData[index], ...dataToUpdate };
-      existingData[index] = updateItem;
+      existingData.splice(index, 1);
       return fs.writeFile(file, JSON.stringify(existingData, null, 2));
     });
   }

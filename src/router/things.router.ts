@@ -7,7 +7,8 @@ export const thingsRouter = Router();
 const repo = new ThingsFileRepo();
 const controller = new ThingsController(repo);
 
-thingsRouter.get('/', controller.getAll.bind(controller));
+thingsRouter.get('/', controller.get.bind(controller));
 thingsRouter.get('/:id', controller.getOne.bind(controller));
-thingsRouter.post('/', controller.updateAll.bind(controller));
-thingsRouter.patch('/:id', controller.updateAll.bind(controller));
+thingsRouter.put('/:id', controller.updateOne.bind(controller));
+thingsRouter.patch('/', controller.create.bind(controller));
+thingsRouter.delete('/:id', controller.delete.bind(controller));
