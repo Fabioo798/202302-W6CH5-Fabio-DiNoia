@@ -9,8 +9,8 @@
     "test:prod": "jest --watchAll --coverage --watchAll=false",
     "start": "cross-env PORT=4000 node ./dist/index.js",
     "start:mon": "cross-env PORT=4000 nodemon ./dist/index.js",
-    "build": "tsc -w",
-    "build:prod": "tsc"
+    "build": "tsc",
+    "build:prod": "tsc w-"
   },
   "keywords": [
     "Node",
